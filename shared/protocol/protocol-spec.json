@@ -1,0 +1,45 @@
+{
+  "protocol": "MAYA Remote Protocol",
+  "version": 1,
+  "transport": "direct-encrypted-tcp",
+  "framing": {
+    "fields": [
+      { "name": "protocolVersion", "type": "uint8", "bytes": 1 },
+      { "name": "messageType", "type": "uint16", "bytes": 2 },
+      { "name": "messageId", "type": "uint64", "bytes": 8 },
+      { "name": "payloadLength", "type": "uint32", "bytes": 4 },
+      { "name": "payload", "type": "bytes", "bytes": "variable" }
+    ],
+    "maxPayloadBytes": 1048576,
+    "byteOrder": "big-endian"
+  },
+  "messageTypes": {
+    "PING": 1,
+    "PONG": 2,
+    "PAIR_REQUEST": 10,
+    "PAIR_RESPONSE": 11,
+    "AUTH_REQUEST": 20,
+    "AUTH_RESPONSE": 21,
+    "DEVICE_INFO": 30,
+    "CONNECTION_STATUS": 40,
+    "DISCONNECT": 50,
+    "REVOKE_DEVICE": 60,
+    "ERROR": 99
+  },
+  "connectionStates": [
+    "DISCONNECTED", "DISCOVERING", "PAIRING", "AUTHENTICATING",
+    "CONNECTING", "CONNECTED", "RECONNECTING", "FAILED", "REVOKED"
+  ],
+  "errors": {
+    "INVALID_PAIRING_CODE": { "code": 1001, "message": "The pairing code is invalid." },
+    "PAIRING_EXPIRED": { "code": 1002, "message": "The pairing code has expired." },
+    "PAIRING_REJECTED": { "code": 1003, "message": "Pairing was rejected by the user." },
+    "DEVICE_NOT_AUTHORIZED": { "code": 2001, "message": "Device is not authorized." },
+    "NETWORK_UNREACHABLE": { "code": 3001, "message": "Network is unreachable." },
+    "CONNECTION_TIMEOUT": { "code": 3002, "message": "Connection timed out." },
+    "TLS_VALIDATION_FAILED": { "code": 4001, "message": "TLS validation failed." },
+    "PROTOCOL_VERSION_UNSUPPORTED": { "code": 5001, "message": "Protocol version is not supported." },
+    "DEVICE_REVOKED": { "code": 6001, "message": "Device access has been revoked." },
+    "REMOTE_CONTROL_DISABLED": { "code": 7001, "message": "Remote control is disabled." }
+  }
+}

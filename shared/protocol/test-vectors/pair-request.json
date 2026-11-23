@@ -1,0 +1,16 @@
+{
+  "name": "pair-request",
+  "description": "PAIR_REQUEST frame roundtrip bytes (header + payload, big-endian).",
+  "messageTypeName": "PAIR_REQUEST",
+  "messageType": 10,
+  "messageId": 100,
+  "protocolVersion": 1,
+  "payloadLength": 75,
+  "payloadUtf8": "{\"kind\":\"pairRequest\",\"deviceName\":\"MAYA Remote\",\"pairingCode\":\"A1B2-C3D4\"}",
+  "payloadHex": "7B226B696E64223A227061697252657175657374222C226465766963654E616D65223A224D4159412052656D6F7465222C2270616972696E67436F6465223A22413142322D43334434227D",
+  "headerHex": "01000A00000000000000640000004B",
+  "frameHex": "01000A00000000000000640000004B7B226B696E64223A227061697252657175657374222C226465766963654E616D65223A224D4159412052656D6F7465222C2270616972696E67436F6465223A22413142322D43334434227D",
+  "frameSizeBytes": 90,
+  "byteOrder": "big-endian",
+  "transport": "direct-encrypted-tcp"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "ping",
+  "description": "PING request frame roundtrip bytes (header + payload, big-endian).",
+  "messageTypeName": "PING",
+  "messageType": 1,
+  "messageId": 1,
+  "protocolVersion": 1,
+  "payloadLength": 43,
+  "payloadUtf8": "{\"kind\":\"ping\",\"timestampMs\":1795390232000}",
+  "payloadHex": "7B226B696E64223A2270696E67222C2274696D657374616D704D73223A313739353339303233323030307D",
+  "headerHex": "01000100000000000000010000002B",
+  "frameHex": "01000100000000000000010000002B7B226B696E64223A2270696E67222C2274696D657374616D704D73223A313739353339303233323030307D",
+  "frameSizeBytes": 58,
+  "byteOrder": "big-endian",
+  "transport": "direct-encrypted-tcp"
+}

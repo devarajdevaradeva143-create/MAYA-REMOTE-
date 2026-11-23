@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.maya.local/protocol/frame/v1/message-schema.json",
+  "title": "MAYA Remote Protocol Framed Message",
+  "description": "A single framed message per protocol-spec.json: a 15-byte big-endian binary header (protocolVersion, messageType, messageId, payloadLength) followed by a variable-length JSON payload. Payload is represented as a base64-encoded string; its decoded byte length must equal payloadLength.",
+  "type": "object",
+  "required": [
+    "protocolVersion",
+    "messageType",
+    "messageId",
+    "payloadLength",
+    "payload"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocolVersion": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255,
+      "const": 1,
+      "description": "uint8 protocol version. Must equal the version in protocol-spec.json (1)."
+    },
+    "messageType": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535,
+      "enum": [1, 2, 10, 11, 20, 21, 30, 40, 50, 60, 99],
+      "description": "uint16 message type. Values taken from protocol-spec.json messageTypes (PING=1, PONG=2, PAIR_REQUEST=10, ...)."
+    },
+    "messageId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 18446744073709551615,
+      "description": "uint64 monotonically increasing message identifier used for request/response correlation."
+    },
+    "payloadLength": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1048576,
+      "description": "uint32 payload length in bytes. Upper bound is maxPayloadBytes (1048576 / 1 MiB) from protocol-spec.json framing."
+    },
+    "payload": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Base64-encoded payload bytes. Decoded length must equal payloadLength. The decoded payload is a JSON object whose schema depends on messageType."
+    }
+  }
+}

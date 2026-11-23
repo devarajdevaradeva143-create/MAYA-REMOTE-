@@ -1,0 +1,16 @@
+{
+  "name": "pong",
+  "description": "PONG response frame roundtrip bytes (header + payload, big-endian).",
+  "messageTypeName": "PONG",
+  "messageType": 2,
+  "messageId": 2,
+  "protocolVersion": 1,
+  "payloadLength": 60,
+  "payloadUtf8": "{\"kind\":\"pong\",\"timestampMs\":1795390232001,\"inResponseTo\":1}",
+  "payloadHex": "7B226B696E64223A22706F6E67222C2274696D657374616D704D73223A313739353339303233323030312C22696E526573706F6E7365546F223A317D",
+  "headerHex": "01000200000000000000020000003C",
+  "frameHex": "01000200000000000000020000003C7B226B696E64223A22706F6E67222C2274696D657374616D704D73223A313739353339303233323030312C22696E526573706F6E7365546F223A317D",
+  "frameSizeBytes": 75,
+  "byteOrder": "big-endian",
+  "transport": "direct-encrypted-tcp"
+}
